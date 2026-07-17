@@ -6,66 +6,76 @@ const viewer = document.getElementById("viewer");
 const viewerImage = document.getElementById("viewerImage");
 const closeBtn = document.getElementById("close");
 
-document.querySelectorAll(".menu-image").forEach((img) => {
+/* Open Image */
 
-    img.addEventListener("click", () => {
+document.querySelectorAll(".menu-image").forEach(img=>{
 
-        viewer.style.display = "flex";
+img.addEventListener("click",()=>{
 
-        viewerImage.src = img.src;
+viewer.style.display="flex";
 
-        document.body.style.overflow = "hidden";
+viewerImage.src=img.src;
 
-    });
+document.body.style.overflow="hidden";
 
 });
+
+});
+
+/* Close */
 
 function closeViewer(){
 
-    viewer.style.display = "none";
+viewer.style.display="none";
 
-    viewerImage.src = "";
+viewerImage.src="";
 
-    document.body.style.overflow = "auto";
+document.body.style.overflow="auto";
 
 }
 
-closeBtn.addEventListener("click", closeViewer);
+closeBtn.onclick=closeViewer;
 
-viewer.addEventListener("click",(e)=>{
+/* Close on Background */
 
-    if(e.target===viewer){
+viewer.onclick=function(e){
 
-        closeViewer();
+if(e.target===viewer){
 
-    }
+closeViewer();
 
-});
+}
 
-document.addEventListener("keydown",(e)=>{
+}
 
-    if(e.key==="Escape"){
+/* ESC */
 
-        closeViewer();
+document.addEventListener("keydown",function(e){
 
-    }
+if(e.key==="Escape"){
 
-});
+closeViewer();
 
-
-/* Prevent image dragging */
-
-document.querySelectorAll(".menu-image").forEach((img)=>{
-
-    img.setAttribute("draggable","false");
+}
 
 });
 
+/* Disable Image Drag */
 
-/* Smooth page loading */
+document.querySelectorAll(".menu-image").forEach(img=>{
 
-window.addEventListener("load",()=>{
+img.draggable=false;
 
-    document.body.style.opacity="1";
+});
+
+/* Disable Right Click on Images */
+
+document.querySelectorAll(".menu-image").forEach(img=>{
+
+img.addEventListener("contextmenu",e=>{
+
+e.preventDefault();
+
+});
 
 });

@@ -1,18 +1,18 @@
-/* ===================================
+/* ==========================
    ORIENTAL FLAME MENU
-=================================== */
+========================== */
 
 const viewer = document.getElementById("viewer");
-const popupImage = document.getElementById("popupImage");
+const viewerImage = document.getElementById("viewerImage");
 const closeBtn = document.getElementById("close");
 
-document.querySelectorAll(".menu-card img").forEach(img => {
+document.querySelectorAll(".menu-image").forEach((img) => {
 
     img.addEventListener("click", () => {
 
-        popupImage.src = img.src;
-
         viewer.style.display = "flex";
+
+        viewerImage.src = img.src;
 
         document.body.style.overflow = "hidden";
 
@@ -20,33 +20,21 @@ document.querySelectorAll(".menu-card img").forEach(img => {
 
 });
 
-closeBtn.addEventListener("click", closeViewer);
-
-viewer.addEventListener("click", function(e){
-
-    if(e.target === viewer){
-
-        closeViewer();
-
-    }
-
-});
-
 function closeViewer(){
 
     viewer.style.display = "none";
 
-    popupImage.src = "";
+    viewerImage.src = "";
 
     document.body.style.overflow = "auto";
 
 }
 
-/* ESC Key */
+closeBtn.addEventListener("click", closeViewer);
 
-document.addEventListener("keydown", function(e){
+viewer.addEventListener("click",(e)=>{
 
-    if(e.key === "Escape"){
+    if(e.target===viewer){
 
         closeViewer();
 
@@ -54,30 +42,30 @@ document.addEventListener("keydown", function(e){
 
 });
 
-/* Smooth WhatsApp Pulse */
+document.addEventListener("keydown",(e)=>{
 
-const whatsapp = document.querySelector(".whatsapp");
+    if(e.key==="Escape"){
 
-setInterval(()=>{
+        closeViewer();
 
-    whatsapp.animate(
+    }
 
-    [
+});
 
-        {transform:"scale(1)"},
 
-        {transform:"scale(1.05)"},
+/* Prevent image dragging */
 
-        {transform:"scale(1)"}
+document.querySelectorAll(".menu-image").forEach((img)=>{
 
-    ],
+    img.setAttribute("draggable","false");
 
-    {
+});
 
-        duration:1200,
 
-        easing:"ease-in-out"
+/* Smooth page loading */
 
-    });
+window.addEventListener("load",()=>{
 
-},3500);
+    document.body.style.opacity="1";
+
+});

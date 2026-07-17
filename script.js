@@ -1,85 +1,243 @@
-/* ===========================
-   ORIENTAL FLAME MENU
-=========================== */
+/* ==========================================
+   ORIENTAL FLAME PREMIUM MENU
+========================================== */
 
-const viewer = document.getElementById("viewer");
-const viewerImage = document.getElementById("viewerImage");
-const closeBtn = document.getElementById("close");
+// Progress Bar
+const progress = document.querySelector(".progress-bar");
 
-const menuImages = document.querySelectorAll(".menu-image");
+window.addEventListener("scroll", () => {
 
-/* Open Full Screen */
+    const total =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
 
-menuImages.forEach((image)=>{
+    const progressWidth =
+        (window.pageYOffset / total) * 100;
 
-image.addEventListener("click",function(){
-
-viewer.style.display="flex";
-
-viewerImage.src=this.src;
-
-document.body.style.overflow="hidden";
+    progress.style.width = progressWidth + "%";
 
 });
 
+// ============================
+// Back To Top Button
+// ============================
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        topBtn.style.display = "flex";
+
+    } else {
+
+        topBtn.style.display = "none";
+
+    }
+
 });
 
-/* Close */
+topBtn.addEventListener("click", () => {
 
-function closeViewer(){
+    window.scrollTo({
 
-viewer.style.display="none";
+        top: 0,
+        behavior: "smooth"
 
-viewerImage.removeAttribute("src");
+    });
 
-document.body.style.overflow="auto";
+});
+
+// ============================
+// Premium Image Viewer
+// ============================
+
+document.querySelectorAll(".menu-card img").forEach(img => {
+
+    img.addEventListener("click", () => {
+
+        const overlay = document.createElement("div");
+
+        overlay.className = "image-overlay";
+
+        overlay.innerHTML = `
+
+<div class="close-btn">&times;</div>
+
+<img src="${img.src}" alt="Oriental Flame Menu">
+
+`;
+
+        document.body.appendChild(overlay);
+
+        document.body.style.overflow = "hidden";
+
+        overlay.addEventListener("click", () => {
+
+            overlay.remove();
+
+            document.body.style.overflow = "auto";
+
+        });
+
+    });
+
+});
+
+// ============================
+// Reveal Animation
+// ============================
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.15
+
+});
+
+document.querySelectorAll(".menu-card").forEach(card => {
+
+    observer.observe(card);
+
+});
+
+// ============================
+// Share Menu
+// ============================
+
+async function shareMenu() {
+
+    if (!navigator.share) return;
+
+    try {
+
+        await navigator.share({
+
+            title: "Oriental Flame Menu",
+
+            text: "Check out the Official Oriental Flame Menu",
+
+            url: window.location.href
+
+        });
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
 
 }
 
-/* Close Button */
+const share = document.createElement("button");
 
-closeBtn.addEventListener("click",closeViewer);
+share.className = "share-btn";
 
-/* Background Click */
+share.innerHTML = "Share Menu";
 
-viewer.addEventListener("click",function(e){
+share.onclick = shareMenu;
 
-if(e.target===viewer){
+document.body.appendChild(share);
 
-closeViewer();
+// ============================
+// WhatsApp Pulse Animation
+// ============================
+
+const whatsappBtn = document.querySelector(".whatsapp");
+
+if (whatsappBtn) {
+
+    setInterval(() => {
+
+        whatsappBtn.animate(
+
+            [
+
+                {
+                    transform: "scale(1)"
+                },
+
+                {
+                    transform: "scale(1.08)"
+                },
+
+                {
+                    transform: "scale(1)"
+                }
+
+            ],
+
+            {
+
+                duration: 1400,
+                easing: "ease-in-out"
+
+            }
+
+        );
+
+    }, 2800);
 
 }
 
-});
+// ============================
+// Lazy Loading Fade Effect
+// ============================
 
-/* ESC Key */
+document.querySelectorAll("img").forEach(img => {
 
-document.addEventListener("keydown",function(e){
+    img.onload = () => {
 
-if(e.key==="Escape"){
+        img.style.opacity = "1";
 
-closeViewer();
-
-}
-
-});
-
-/* Disable Drag */
-
-menuImages.forEach((image)=>{
-
-image.setAttribute("draggable","false");
+    };
 
 });
 
-/* Disable Right Click */
+// ============================
+// Disable Right Click on Images
+// ============================
 
-menuImages.forEach((image)=>{
+document.querySelectorAll(".menu-card img").forEach(img => {
 
-image.addEventListener("contextmenu",function(e){
+    img.addEventListener("contextmenu", (e) => {
 
-e.preventDefault();
+        e.preventDefault();
+
+    });
 
 });
+
+// ============================
+// Keyboard Support
+// ============================
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        const overlay = document.querySelector(".image-overlay");
+
+        if (overlay) {
+
+            overlay.remove();
+
+            document.body.style.overflow = "auto";
+
+        }
+
+    }
 
 });

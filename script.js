@@ -1,20 +1,22 @@
-/* ==========================
+/* ===========================
    ORIENTAL FLAME MENU
-========================== */
+=========================== */
 
 const viewer = document.getElementById("viewer");
 const viewerImage = document.getElementById("viewerImage");
 const closeBtn = document.getElementById("close");
 
-/* Open Image */
+const menuImages = document.querySelectorAll(".menu-image");
 
-document.querySelectorAll(".menu-image").forEach(img=>{
+/* Open Full Screen */
 
-img.addEventListener("click",()=>{
+menuImages.forEach((image)=>{
+
+image.addEventListener("click",function(){
 
 viewer.style.display="flex";
 
-viewerImage.src=img.src;
+viewerImage.src=this.src;
 
 document.body.style.overflow="hidden";
 
@@ -28,17 +30,19 @@ function closeViewer(){
 
 viewer.style.display="none";
 
-viewerImage.src="";
+viewerImage.removeAttribute("src");
 
 document.body.style.overflow="auto";
 
 }
 
-closeBtn.onclick=closeViewer;
+/* Close Button */
 
-/* Close on Background */
+closeBtn.addEventListener("click",closeViewer);
 
-viewer.onclick=function(e){
+/* Background Click */
+
+viewer.addEventListener("click",function(e){
 
 if(e.target===viewer){
 
@@ -46,9 +50,9 @@ closeViewer();
 
 }
 
-}
+});
 
-/* ESC */
+/* ESC Key */
 
 document.addEventListener("keydown",function(e){
 
@@ -60,19 +64,19 @@ closeViewer();
 
 });
 
-/* Disable Image Drag */
+/* Disable Drag */
 
-document.querySelectorAll(".menu-image").forEach(img=>{
+menuImages.forEach((image)=>{
 
-img.draggable=false;
+image.setAttribute("draggable","false");
 
 });
 
-/* Disable Right Click on Images */
+/* Disable Right Click */
 
-document.querySelectorAll(".menu-image").forEach(img=>{
+menuImages.forEach((image)=>{
 
-img.addEventListener("contextmenu",e=>{
+image.addEventListener("contextmenu",function(e){
 
 e.preventDefault();
 

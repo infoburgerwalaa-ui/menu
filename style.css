@@ -1,379 +1,159 @@
-/* ===================================
-   ORIENTAL FLAME
-   Premium Digital Menu
-=================================== */
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-:root{
-
---primary:#e11b22;
---dark:#111111;
---bg:#0b0b0b;
---white:#ffffff;
---text:#d7d7d7;
-
-}
-
 html{
-
 scroll-behavior:smooth;
-
 }
 
 body{
 
+background:#111;
 font-family:'Poppins',sans-serif;
-background:#080808;
-color:#fff;
 overflow-x:hidden;
 
 }
 
-/* Progress */
+/* Logo */
 
-.progress-bar{
+.logo-section{
 
-position:fixed;
-top:0;
-left:0;
-height:4px;
-width:0;
-background:linear-gradient(90deg,#ff2f37,#ff8400);
-z-index:99999;
-
-}
-
-/* Header */
-
-header{
-
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(0,0,0,.88);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-.container{
-
-max-width:1400px;
-margin:auto;
-padding:15px 22px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-}
-
-.logo-area{
-
-display:flex;
-align-items:center;
-
-}
-
-.logo-area img{
-
-width:72px;
-height:72px;
-object-fit:contain;
-border-radius:50%;
-
-}
-
-.brand{
-
-margin-left:15px;
-
-}
-
-.brand h1{
-
-font-size:34px;
-font-weight:700;
-color:#ff2b33;
-letter-spacing:2px;
-
-}
-
-.brand p{
-
-font-size:14px;
-color:#bcbcbc;
-margin-top:5px;
-
-}
-
-/* Call Button */
-
-.call-btn{
-
-padding:13px 24px;
-border-radius:50px;
-background:#ff2b33;
-color:#fff;
-text-decoration:none;
-font-weight:600;
-transition:.35s;
-
-}
-
-.call-btn:hover{
-
-background:#ff4a50;
-
-}
-
-/* Hero */
-
-.hero{
-
-height:52vh;
-background:url("page1.jpg") center center/cover no-repeat;
-position:relative;
-
-}
-
-.hero::before{
-
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.68);
-
-}
-
-.hero-overlay{
-
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+background:#000;
+padding:18px 15px;
 text-align:center;
-width:90%;
+border-bottom:2px solid #222;
 
 }
 
-.hero h2{
+.logo-section img{
 
-font-size:54px;
-font-weight:700;
-
-}
-
-.hero p{
-
-margin-top:15px;
-font-size:18px;
-color:#ddd;
-
-}
-
-.hero-btn{
-
+width:220px;
+max-width:90%;
+height:auto;
 display:inline-block;
-margin-top:30px;
-padding:16px 34px;
-background:#ff2b33;
-color:#fff;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-
-}
-
-.hero-btn:hover{
-
-transform:translateY(-3px);
 
 }
 
 /* Menu */
 
-.menu-section{
+.menu{
 
-padding:70px 20px;
-max-width:1350px;
-margin:auto;
-
-}
-
-.menu-section h2{
-
-font-size:42px;
-text-align:center;
-
-}
-
-.menu-section p{
-
-text-align:center;
-margin-top:12px;
-color:#bbb;
-
-}
-
-.menu-grid{
-
-margin-top:45px;
-display:grid;
-gap:35px;
+max-width:1400px;
+margin:0 auto;
+padding:0;
 
 }
 
 .menu-card{
 
-background:#141414;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:.35s;
-
-}
-
-.menu-card:hover{
-
-transform:translateY(-8px);
+margin:0;
+padding:0;
 
 }
 
 .menu-card img{
 
-width:100%;
 display:block;
+width:100%;
+height:auto;
 cursor:pointer;
+user-select:none;
 
 }
 
 /* WhatsApp */
 
-.floating{
-
-position:fixed;
-left:0;
-right:0;
-bottom:22px;
-display:flex;
-justify-content:center;
-z-index:9999;
-pointer-events:none;
-
-}
-
 .whatsapp{
 
-pointer-events:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:18px 35px;
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
 background:#25D366;
+
 color:#fff;
+
 text-decoration:none;
-font-weight:700;
-font-size:18px;
-border-radius:100px;
-box-shadow:0 15px 35px rgba(0,0,0,.35);
-transition:.3s;
+
+padding:16px 26px;
+
+border-radius:50px;
+
+font-weight:600;
+
+font-size:17px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+z-index:9999;
+
+transition:.25s;
 
 }
 
 .whatsapp:hover{
 
-transform:scale(1.04);
+transform:scale(1.05);
 
 }
 
-/* Top Button */
+/* Full Screen Viewer */
 
-#topBtn{
+.viewer{
 
 position:fixed;
-right:22px;
-bottom:95px;
-width:56px;
-height:56px;
-border:none;
-border-radius:50%;
-background:#ff2b33;
-color:#fff;
-font-size:24px;
-cursor:pointer;
-display:none;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
 
-}
+left:0;
 
-/* Footer */
+top:0;
 
-footer{
+width:100%;
 
-padding:70px 20px;
-text-align:center;
-background:#111;
+height:100%;
 
-}
-
-footer img{
-
-width:90px;
-margin-bottom:20px;
-
-}
-
-footer h3{
-
-font-size:30px;
-color:#ff2b33;
-
-}
-
-footer p{
-
-margin-top:10px;
-color:#bbb;
-
-}
-
-/* Image Popup */
-
-.image-overlay{
-
-position:fixed;
-inset:0;
 background:rgba(0,0,0,.96);
-display:flex;
+
+display:none;
+
 justify-content:center;
+
 align-items:center;
-z-index:100000;
-padding:25px;
+
+padding:20px;
+
+z-index:10000;
 
 }
 
-.image-overlay img{
+.viewer img{
 
 max-width:100%;
+
 max-height:100%;
-border-radius:12px;
+
+object-fit:contain;
 
 }
 
-.close-btn{
+#close{
 
 position:absolute;
-top:25px;
+
+top:20px;
+
 right:30px;
-font-size:40px;
-cursor:pointer;
+
+font-size:45px;
+
 color:#fff;
+
+cursor:pointer;
+
+font-weight:bold;
 
 }
 
@@ -381,60 +161,31 @@ color:#fff;
 
 @media(max-width:768px){
 
-.brand h1{
+.logo-section{
 
-font-size:24px;
-
-}
-
-.logo-area img{
-
-width:58px;
-height:58px;
+padding:15px 10px;
 
 }
 
-.hero{
+.logo-section img{
 
-height:40vh;
-
-}
-
-.hero h2{
-
-font-size:34px;
-
-}
-
-.hero p{
-
-font-size:15px;
-
-}
-
-.hero-btn{
-
-padding:14px 26px;
-
-}
-
-.menu-section h2{
-
-font-size:30px;
+width:170px;
 
 }
 
 .whatsapp{
 
-width:92%;
-font-size:17px;
-padding:16px;
+left:12px;
 
-}
+right:12px;
 
-.call-btn{
+bottom:12px;
 
-display:none;
+text-align:center;
+
+font-size:16px;
+
+padding:15px;
 
 }
 

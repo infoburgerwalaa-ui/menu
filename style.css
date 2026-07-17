@@ -1,3 +1,7 @@
+/* ===========================
+   ORIENTAL FLAME MENU
+=========================== */
+
 *{
 margin:0;
 padding:0;
@@ -10,29 +14,35 @@ scroll-behavior:smooth;
 
 body{
 
-background:#111;
 font-family:'Poppins',sans-serif;
+background:#ffffff;
 overflow-x:hidden;
 
 }
 
-/* Logo */
+/* Header */
 
-.logo-section{
+.header{
 
-background:#000;
+width:100%;
 padding:18px 15px;
-text-align:center;
-border-bottom:2px solid #222;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#ffffff;
+border-bottom:1px solid #ececec;
+position:sticky;
+top:0;
+z-index:999;
 
 }
 
-.logo-section img{
+.logo{
 
 width:220px;
-max-width:90%;
+max-width:80%;
 height:auto;
-display:inline-block;
+display:block;
 
 }
 
@@ -40,26 +50,28 @@ display:inline-block;
 
 .menu{
 
-max-width:1400px;
-margin:0 auto;
-padding:0;
+max-width:900px;
+margin:20px auto 90px;
+padding:0 15px;
 
 }
 
-.menu-card{
-
-margin:0;
-padding:0;
-
-}
-
-.menu-card img{
+.menu-image{
 
 display:block;
 width:100%;
 height:auto;
-cursor:pointer;
-user-select:none;
+margin:0;
+padding:0;
+cursor:zoom-in;
+border-radius:10px;
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.menu-image + .menu-image{
+
+margin-top:18px;
 
 }
 
@@ -68,26 +80,25 @@ user-select:none;
 .whatsapp{
 
 position:fixed;
+right:18px;
+bottom:18px;
 
-right:20px;
+width:58px;
+height:58px;
 
-bottom:20px;
+display:flex;
+justify-content:center;
+align-items:center;
 
 background:#25D366;
-
 color:#fff;
 
+font-size:30px;
 text-decoration:none;
 
-padding:16px 26px;
+border-radius:50%;
 
-border-radius:50px;
-
-font-weight:600;
-
-font-size:17px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.35);
+box-shadow:0 8px 20px rgba(0,0,0,.25);
 
 z-index:9999;
 
@@ -97,22 +108,18 @@ transition:.25s;
 
 .whatsapp:hover{
 
-transform:scale(1.05);
+transform:scale(1.08);
 
 }
 
-/* Full Screen Viewer */
+/* Image Viewer */
 
-.viewer{
+#viewer{
 
 position:fixed;
-
 left:0;
-
 top:0;
-
 width:100%;
-
 height:100%;
 
 background:rgba(0,0,0,.96);
@@ -120,21 +127,18 @@ background:rgba(0,0,0,.96);
 display:none;
 
 justify-content:center;
-
 align-items:center;
 
 padding:20px;
 
-z-index:10000;
+z-index:99999;
 
 }
 
-.viewer img{
+#viewer img{
 
 max-width:100%;
-
 max-height:100%;
-
 object-fit:contain;
 
 }
@@ -144,16 +148,13 @@ object-fit:contain;
 position:absolute;
 
 top:20px;
-
 right:30px;
 
 font-size:45px;
-
+font-weight:bold;
 color:#fff;
 
 cursor:pointer;
-
-font-weight:bold;
 
 }
 
@@ -161,31 +162,40 @@ font-weight:bold;
 
 @media(max-width:768px){
 
-.logo-section{
+.header{
 
-padding:15px 10px;
+padding:12px;
 
 }
 
-.logo-section img{
+.logo{
 
 width:170px;
 
 }
 
+.menu{
+
+padding:10px;
+margin-top:10px;
+
+}
+
+.menu-image{
+
+border-radius:8px;
+
+}
+
 .whatsapp{
 
-left:12px;
+width:54px;
+height:54px;
+
+font-size:28px;
 
 right:12px;
-
 bottom:12px;
-
-text-align:center;
-
-font-size:16px;
-
-padding:15px;
 
 }
 
